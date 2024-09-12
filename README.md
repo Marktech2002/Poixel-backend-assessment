@@ -1,4 +1,4 @@
-This is Poixel Backend assessment built with Node.js and Expressand TypeScript :rocket:
+This is Poixel Backend assessment built with Node.js , Express and TypeScript :rocket: :rocket:
 
 #### API FEATURES
 - Authentication ( Regular ) User , Admin 
