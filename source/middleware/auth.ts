@@ -1,5 +1,5 @@
 import { Response, NextFunction } from 'express';
-import { AuthRequest  } from '../utils/interface';
+import { AuthRequest } from '../utils/interface';
 import jwt from 'jsonwebtoken';
 import User from '../models/User';
 import Admin from '../models/Admin';
@@ -12,15 +12,13 @@ import { AuthError } from './error';
  * @param next
  * @returns Response
  */
-export const protectUser =  async (req: AuthRequest, res: Response, next: NextFunction) => {
+export const protectUser = async (req: AuthRequest, res: Response, next: NextFunction) => {
   const bearer = req.headers.authorization;
-  if (!bearer) 
-    return next(new AuthError('No Authentication Provided'));
+  if (!bearer) return next(new AuthError('No Authentication Provided'));
 
   const [, token] = bearer.split(' '); // destructuring
 
-  if (!token) 
-    return next (new AuthError('Authorized accesss:: Bearer has no token'));
+  if (!token) return next(new AuthError('Authorized accesss:: Bearer has no token'));
 
   try {
     const payload = jwt.verify(token, process.env.JWT_SECRET) as jwt.JwtPayload;
@@ -35,41 +33,37 @@ export const protectUser =  async (req: AuthRequest, res: Response, next: NextFu
 
     next();
   } catch (e) {
-    return next (new AuthError('Authorized accesss:: Invalid Token Provided'));
+    return next(new AuthError('Authorized accesss:: Invalid Token Provided'));
   }
 };
 
-
 /**
  * @desc Protect Admin routes
- * @param req 
- * @param res 
- * @param next 
+ * @param req
+ * @param res
+ * @param next
  * @returns Response
  */
-export const protectAdmin = async (req : AuthRequest , res : Response , next : NextFunction)=> {
+export const protectAdmin = async (req: AuthRequest, res: Response, next: NextFunction) => {
   const bearer = req.headers.authorization;
 
-    if (!bearer) 
-      return next(new AuthError('No Authentication Provided'));
+  if (!bearer) return next(new AuthError('No Authentication Provided'));
 
-    const [, token] = bearer.split(' '); 
+  const [, token] = bearer.split(' ');
 
-    if (!token) 
-       return next(new AuthError('Bearer has no token'));
+  if (!token) return next(new AuthError('Bearer has no token'));
 
-     try {
-      const payload = jwt.verify(token, process.env.JWT_SECRET) as jwt.JwtPayload;
+  try {
+    const payload = jwt.verify(token, process.env.JWT_SECRET) as jwt.JwtPayload;
 
-      const admin = await Admin.findOne({ email: payload.email }).select('-password');
-      if (!admin) 
-        return next(new AuthError('Authorized accesss:: Admin not found'));
-      
-      req.admin = {
-        email: admin.email,
-      };
-      next();
-     } catch (error) {
-      return next (new AuthError('Authorized accesss:: Invalid Token Provided'));
-     }
+    const admin = await Admin.findOne({ email: payload.email }).select('-password');
+    if (!admin) return next(new AuthError('Authorized accesss:: Admin not found'));
+
+    req.admin = {
+      email: admin.email,
+    };
+    next();
+  } catch (error) {
+    return next(new AuthError('Authorized accesss:: Invalid Token Provided'));
+  }
 };

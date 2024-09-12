@@ -1,4 +1,4 @@
-import { IsDefined, IsEmail, IsOptional, IsString, Length , IsMongoId , IsArray, ArrayNotEmpty} from 'class-validator';
+import { IsDefined, IsEmail, IsOptional, IsString, Length, IsMongoId, IsArray, ArrayNotEmpty } from 'class-validator';
 import mongoose from 'mongoose';
 
 class SignUp {
@@ -59,5 +59,4 @@ class DeleteUser {
   userIds: mongoose.Types.ObjectId[];
 }
 
-
-export { SignUp, SignIn, EditProfile , DeleteUser };
+export { SignUp, SignIn, EditProfile, DeleteUser };

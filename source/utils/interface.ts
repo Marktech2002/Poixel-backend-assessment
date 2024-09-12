@@ -6,8 +6,8 @@ export interface AuthRequest extends Request {
     firstName: string;
     lastName: string;
     email: string;
-    businessType?: string; 
-  },
+    businessType?: string;
+  };
   admin?: {
     email: string;
   };

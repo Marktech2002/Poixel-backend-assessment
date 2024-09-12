@@ -9,14 +9,14 @@ dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 class Server {
   private port = process.env.PORT || 8000;
   private app;
-  private mongoDB = new MongoDB(); 
+  private mongoDB = new MongoDB();
 
   constructor(app: Application) {
     this.app = app;
   }
 
   async start() {
-    await this.mongoDB.connectDB(); 
+    await this.mongoDB.connectDB();
     this.app.listen(this.port, () => {
       logger.info(`Listening on url http://localhost:${this.port}`);
     });

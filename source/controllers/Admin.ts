@@ -7,14 +7,13 @@ import { AuthError, BadRequestError, NotFoundError } from '../middleware/error';
 
 /**
  * AdminController handles admin authentication and profile management.
- * 
+ *
  * Methods:
  * - signUp: Registers a new admin.
  * - signIn: Authenticates an admin and generates a JWT.
  * - getProfile: Fetches the authenticated admin's profile.
  */
 export default class AdminController {
-
   static signUp = async (req: Request, res: Response) => {
     const { email, password } = req.body;
 
