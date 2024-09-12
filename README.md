@@ -26,7 +26,9 @@ Create a .env.test and .env.development and populate using the .env.sample file.
 > npm run dev
 ```
 
-To run the Unit test:
+To run the Unit and Integration test:
+- Use this command to run ```npm run test```
+```sh
 # run test
 > npm run test
 ```
