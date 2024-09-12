@@ -1,0 +1,51 @@
+{
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/cors": "^2.8.13",
+    "@types/express": "^4.17.15",
+    "@types/jest": "^29.2.5",
+    "@types/morgan": "^1.9.4",
+    "@types/node": "^18.11.15",
+    "dotenv-cli": "^7.4.2",
+    "express": "^4.18.2",
+    "express-validator": "^6.14.2",
+    "express-validators": "^1.0.4",
+    "jest": "^29.3.1",
+    "supertest": "^6.3.3",
+    "ts-jest": "^29.0.5",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.4"
+  },
+  "engines": {
+    "node": "20.16.0"
+  },
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development nodemon -L source/index.ts",
+    "test": "dotenv -e .env.test -- npx jest --watchAll",
+    "lint": "eslint source/*.ts",
+    "format": "eslint source/**/*.ts --fix",
+    "pretty": "prettier --write \"source/**/*.ts\""
+  },
+  "dependencies": {
+    "@types/jsonwebtoken": "^9.0.1",
+    "@types/winston": "^2.4.4",
+    "@typescript-eslint/eslint-plugin": "^5.50.0",
+    "@typescript-eslint/parser": "^5.50.0",
+    "axios": "^1.2.2",
+    "bcrypt": "^5.1.1",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.0",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.0.3",
+    "eslint": "^8.33.0",
+    "express-async-errors": "^3.1.1",
+    "http-status-codes": "^2.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^8.6.2",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.20",
+    "prettier": "^2.8.3",
+    "winston": "^3.8.2"
+  }
+}
